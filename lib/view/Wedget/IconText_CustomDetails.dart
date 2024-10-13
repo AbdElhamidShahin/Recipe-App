@@ -29,7 +29,7 @@ class IconText extends StatelessWidget {
             ),
           ),
           SizedBox(width: 4),
-          Text(text, style: TextStyle(fontSize: 14)),
+          Text(text, style: TextStyle(fontSize: 16)),
         ],
       ),
     );

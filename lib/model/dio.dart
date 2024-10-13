@@ -4,22 +4,30 @@ import 'articalmodel.dart';
 class RecipeService {
   final Dio _dio = Dio();
 
-  Future<List<ArticleModel>> fetchRecipes(String keyword) async { // تعديل النوع
+  Future<List<ArticleModel>> fetchRecipes(String keyword) async {
+
     final String url =
         'https://api.edamam.com/api/recipes/v2?type=public&q=$keyword&app_id=253c3edc&app_key=4344d3401f66d8bbfe3548508eefd57e';
 
     try {
-      // Make the HTTP GET request
       final Response response = await _dio.get(url);
 
-      // Check if the response was successful
       if (response.statusCode == 200) {
         final List recipes = response.data['hits'];
 
         return recipes.map<ArticleModel>((recipe) {
+          final recipeData = recipe['recipe'];
+          final totalNutrients = recipeData['totalNutrients'];
+
           return ArticleModel(
-            title: recipe['recipe']['label'], // اسم الوصفة
-            image: recipe['recipe']['image'], // صورة الوصفة
+            title: recipeData['label'],
+            image: recipeData['image'],
+            ingredientLines: List<String>.from(recipeData['ingredientLines']),
+            calories: totalNutrients['ENERC_KCAL']['quantity'],
+            fat: totalNutrients['FAT']['quantity'],
+            protein: totalNutrients['PROCNT']['quantity'],
+            carbohydrates: totalNutrients['CHOCDF']['quantity'],
+            servings: recipeData['yield']?.toInt() ?? 1,
           );
         }).toList();
       } else {

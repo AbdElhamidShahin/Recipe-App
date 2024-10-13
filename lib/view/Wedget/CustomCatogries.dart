@@ -4,24 +4,22 @@ import 'CustomDetails.dart';
 
 class CustomCategories extends StatelessWidget {
   final ArticleModel? articaleModel;
-  final Recipe? recipe; // Declare recipe variable
 
-  const CustomCategories({super.key, this.articaleModel, this.recipe});
+  const CustomCategories({super.key, this.articaleModel});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // تأكد من أنك تستدعي CustomDetails وليس CustomCategories هنا
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => CustomDetails(
-              articaleModel: recipe, // Ensure 'recipe' is a valid object of type Recipe
-              articaleModeL: articaleModel, // Ensure 'article' is a valid object of type ArticaleModel
+           articleModel: articaleModel, // تمرير articaleModel إلى CustomDetails
             ),
           ),
         );
-
 
       },
       child: Stack(
