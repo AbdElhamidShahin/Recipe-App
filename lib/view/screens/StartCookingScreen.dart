@@ -20,7 +20,7 @@ class StartCookingScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(28),
                 image: DecorationImage(
-                  image: AssetImage('assets/imagesFood/download.jpg'),
+                  image: AssetImage('assets/imagesFood/download.png'),
                   fit: BoxFit.cover,
                 ),
               ),

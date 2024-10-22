@@ -13,10 +13,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Color.fromARGB(42,45,52,255),
+          selectedItemColor: Colors.white,
+          selectedLabelStyle: TextStyle(color: Colors.white),
+          unselectedItemColor: Colors.white,
+          elevation: 5,
+        ),
         useMaterial3: true,
-
-      ),debugShowCheckedModeBanner: false,
+      ),
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }

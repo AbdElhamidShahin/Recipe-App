@@ -3,72 +3,76 @@ import '../../model/articalmodel.dart';
 import 'CustomDetails.dart';
 
 class CustomCategories extends StatelessWidget {
-  final ArticleModel? articaleModel;
+  final Recipe? recipe;
 
-  const CustomCategories({super.key, this.articaleModel});
+  const CustomCategories({super.key, this.recipe});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // تأكد من أنك تستدعي CustomDetails وليس CustomCategories هنا
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CustomDetails(
-           articleModel: articaleModel, // تمرير articaleModel إلى CustomDetails
-            ),
+            builder: (context) => CustomDetails(recipe: recipe),
           ),
         );
-
       },
       child: Stack(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child:
-                 Image.network(
-              articaleModel!.image!,
-              height: 270,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset(
-                  'assets/imagesFood/download.jpg',
-                  height: 270,
-                );
-              },
-            )
-
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.black54,
-                  ),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        articaleModel?.title ?? 'اسم غير متاح',
-                        style: const TextStyle(color: Colors.white),
-                      ),
+          Positioned(
+            top: 70,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          recipe?.name ?? 'اسم غير متاح',
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 20),
+                        ),
+                        const Text(
+                          '⏱ 15 Mins',
+                          style: TextStyle(color: Colors.black, fontSize: 12),
+                        ),
+                      ],
                     ),
-                  ),
+                  ],
                 ),
-                Text(
-                  articaleModel?.title ?? 'اسم غير متاح',
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                const Text(
-                  '⏱ 15 دقيقة',
-                  style: TextStyle(color: Colors.white, fontSize: 12),
-                ),
-              ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 100,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(
+                recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                height: 200,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/imagesFood/download.png',
+                    height: 270,
+                  );
+                },
+              ),
             ),
           ),
         ],

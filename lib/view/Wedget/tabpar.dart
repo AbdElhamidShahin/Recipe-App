@@ -11,17 +11,14 @@ class TabBarPage extends StatefulWidget {
 
 class _TabBarPageState extends State<TabBarPage> {
   @override
-  Widget build(BuildContext context) {    final String keyword = 'مثال'; // أو يمكنك الحصول عليها من مكان آخر مثل نموذج
-
-  return DefaultTabController(
+  Widget build(BuildContext context) {
+    return DefaultTabController(
       length: 5,
       child: Column(
         children: <Widget>[
           ButtonsTabBar(
-            backgroundColor: Color(0xFFEEEEEE),
-            unselectedBackgroundColor:  Colors.white,
+            unselectedBackgroundColor: Colors.white,
             labelStyle: const TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
             unselectedLabelStyle: const TextStyle(
@@ -29,43 +26,98 @@ class _TabBarPageState extends State<TabBarPage> {
               fontWeight: FontWeight.bold,
             ),
             height: 100,
-            radius: 100,
-            tabs: const [
+            radius: 0, // لجعل الحواف مربعة
+            buttonMargin: const EdgeInsets.symmetric(
+                horizontal: 16.0), // المسافة بين كل تبويب
+            tabs: [
               Tab(
-                child: CustomImage(
-                    text: 'Steak', image: 'assets/TabBar_Image/tasty-grilled-steak-on-white-600w-1167071881.webp'),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(16)), // الحواف المربعة
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0), // لضبط المسافة داخل التبويب
+                    child: CustomImage(
+                        text: 'Steak',
+                        image: 'assets/TabBar_Image/download.png'),
+                  ),
+                ),
               ),
               Tab(
-                child: CustomImage(
-                    text: 'Desserts', image: 'assets/TabBar_Image/cherry-dessert-white-background-nobody-birthday-celebration-bright-cupcake-dessert-whipped-cream-cherry-112153178.webp'),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CustomImage(
+                        text: 'Desserts',
+                        image: 'assets/TabBar_Image/Dessertsjpeg.png'),
+                  ),
+                ),
               ),
               Tab(
-                child: CustomImage(
-                    text: 'Breakfast', image: 'assets/TabBar_Image/360_F_246169236_XndijzYiPUZmE5C8aZM9ee7wdvPD9WbX.webp'),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CustomImage(
+                        text: 'Breakfast',
+                        image: 'assets/TabBar_Image/download.png'),
+                  ),
+                ),
               ),
               Tab(
-                child: CustomImage(
-                    text: 'Fast Food', image: 'assets/TabBar_Image/images.webp'),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CustomImage(
+                        text: 'Fast Food',
+                        image: 'assets/TabBar_Image/download.png'),
+                  ),
+                ),
               ),
               Tab(
-                child: CustomImage(
-                    text: 'Sea Food', image: 'assets/TabBar_Image/pngtree-grilled-assortment-of-seafood-on-white-background-with-png-image_11086251.png'),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CustomImage(
+                        text: 'Sea Food',
+                        image: 'assets/TabBar_Image/Sea Food.png'),
+                  ),
+                ),
               ),
             ],
           ),
           const SizedBox(height: 10),
           SizedBox(
-            height: 300,
+            height: 600,
             child: TabBarView(
               children: [
-                Stackscreen(keyword: 'keyword',),
-                Stackscreen(keyword: 'keyword',),
-                Stackscreen(keyword: 'keyword',),
-
-                Stackscreen(keyword: 'keyword',),
-
-                Stackscreen(keyword: 'keyword',),
-
+                Stackscreen(),
+                Stackscreen(),
+                Stackscreen(),
+                Stackscreen(),
+                Stackscreen(),
               ],
             ),
           ),

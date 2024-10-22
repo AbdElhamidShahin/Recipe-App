@@ -5,62 +5,52 @@ import '../../model/articalmodel.dart';
 import '../screens/StartCookingScreen.dart';
 
 class CustomDetails extends StatelessWidget {
-  final ArticleModel? articleModel; // Keep only the relevant parameter
+  final Recipe? recipe; // Keep only the relevant parameter
+  final Nutrition? nutrition; // Keep only the relevant parameter
 
   const CustomDetails(
-      {super.key, required this.articleModel}); // Make it required for clarity
+      {super.key,
+      required this.recipe,
+      this.nutrition}); // Make it required for clarity
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:
+          Color.fromRGBO(42, 45, 52, 1), // شفافية كاملة (بدون شفافية)
+
       body: Stack(
         children: [
-          // Background image
           Positioned(
-            top: 0,
+            bottom: 0,
             left: 0,
             right: 0,
-            child: Container(
-              height: 250,
-              child: Image.network(
-                articleModel?.image ?? 'assets/imagesFood/download.jpg',
-                height: 270,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    'assets/imagesFood/download.jpg',
-                    height: 270,
-                  );
-                },
-              ),
-            ),
-          ),
-          // Text overlaid on a specific part of the image
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Recipe title
-                    SizedBox(height: 20,),
-                    Text(
-                      articleModel?.title ?? '',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      height: 120,
+                    ),
+                    Center(
+                      child: Text(
+                        recipe?.name ?? '',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 8),
-
+                    SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,29 +59,33 @@ class CustomDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconText(
-                                icon: Icons.eco_outlined,
-                                text:
-                                    " ${articleModel?.carbohydrates.toStringAsFixed(2) ?? '0.00'}g Carbs"),
+                              text: "${recipe?.nutrition.prepTime} calories",
+                              image: 'assets/imagesFood/timer.jpeg',
+                            ),
                             IconText(
-                                icon: Icons.eco_outlined,
-                                text:
-                                    " ${articleModel?.servings.toStringAsFixed(2) ?? '0.00'} Proteins"),
+                              text: "${recipe?.nutrition.calories} calories",
+                              image: 'assets/imagesFood/22.jpeg',
+                            ),
+                            IconText(
+                              text: "${recipe?.nutrition.protein} ",
+                              image: 'assets/imagesFood/star.jpeg',
+                            ),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconText(
-                                icon: Icons.balcony,
-                                text:
-                                    " ${articleModel?.protein.toStringAsFixed(2) ?? '0.00'}g Kcal"),
-                            Spacer(),
-                            IconText(
-                                icon: Icons.food_bank,
-                                text:
-                                    " ${articleModel?.fat.toStringAsFixed(2) ?? '0.00'}g Fats"),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     IconText(
+                        //         icon: Icons.balcony,
+                        //         text:
+                        //             " ${nutrition?.prepTime.toStringAsFixed(0) ?? '0.00'}g Kcal"),
+                        //     Spacer(),
+                        //     IconText(
+                        //         icon: Icons.food_bank,
+                        //         text:
+                        //             " ${nutrition?.protein.toStringAsFixed(0) ?? '0.00'}g Fats"),
+                        //   ],
+                        // ),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -102,15 +96,13 @@ class CustomDetails extends StatelessWidget {
                           TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
-                    if (articleModel?.ingredientLines != null &&
-                        articleModel!.ingredientLines.isNotEmpty)
+                    if (recipe?.steps != null && recipe!.steps!.isNotEmpty)
                       Container(
                         height: 220,
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:
-                                articleModel!.ingredientLines.map((ingredient) {
+                            children: recipe!.ingredients.map((ingredient) {
                               return Ingredients(
                                 text1:
                                     ingredient, // تأكد من أن ingredient هو نص
@@ -154,6 +146,26 @@ class CustomDetails extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 460,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(
+                recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                height: 80,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/imagesFood/download.png',
+                    height: 80,
+                  );
+                },
               ),
             ),
           ),

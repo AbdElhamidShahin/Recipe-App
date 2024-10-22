@@ -41,6 +41,7 @@ dependencies:
   fluttericon: ^2.0.0
   flutter_svg: ^2.0.10+1
   dio: ^5.7.0
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,10 @@ flutter:
   assets:
     - assets/imagesFood/
     - assets/TabBar_Image/
+    - assets/images/
+    - assets/TabBar_Image/
+
+    - assets/Recipe/recipe.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -94,3 +99,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
