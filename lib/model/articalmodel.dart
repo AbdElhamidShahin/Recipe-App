@@ -7,6 +7,7 @@ class Recipe {
   final String name;
   final String description;
   final String imageUrl;
+
   final List<String> ingredients;
   final List<String> steps;
   final Nutrition nutrition;
@@ -30,7 +31,17 @@ class Recipe {
       ingredients: List<String>.from(json['ingredients']),
       steps: List<String>.from(json['steps']),
       nutrition: Nutrition.fromJson(json['nutrition']),
+
     );
+  }  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'imageUrl': imageUrl,
+      'ingredients': ingredients,
+      'steps': steps,
+    };
   }
 }
 

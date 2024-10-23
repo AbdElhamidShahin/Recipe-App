@@ -59,7 +59,7 @@ class CustomDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconText(
-                              text: "${recipe?.nutrition.prepTime} calories",
+                              text: "${recipe?.nutrition.prepTime} min",
                               image: 'assets/imagesFood/timer.jpeg',
                             ),
                             IconText(
@@ -156,16 +156,19 @@ class CustomDetails extends StatelessWidget {
             bottom: 460,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                height: 80,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    'assets/imagesFood/download.png',
-                    height: 80,
-                  );
-                },
+              child: Container(
+                width: double.infinity, // العرض الكامل
+                height: 250, // تحديد ارتفاع الصورة
+                child: Image.asset(
+                  recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/imagesFood/download.png',
+                      fit: BoxFit.cover, // تأكد من ضبط الأبعاد هنا أيضاً
+                    );
+                  },
+                ),
               ),
             ),
           ),

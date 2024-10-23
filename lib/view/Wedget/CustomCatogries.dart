@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../model/articalmodel.dart';
+import '../../model/itemProvider.dart';
 import 'CustomDetails.dart';
 
 class CustomCategories extends StatelessWidget {
@@ -44,10 +46,23 @@ class CustomCategories extends StatelessWidget {
                           style: const TextStyle(
                               color: Colors.black, fontSize: 20),
                         ),
-                        const Text(
-                          '⏱ 15 Mins',
-                          style: TextStyle(color: Colors.black, fontSize: 12),
+                        Row(
+                          children: [
+                            const Text(
+                              '⏱ 15 Mins',
+                              style: TextStyle(color: Colors.black, fontSize: 12),
+                            ),
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {
+                                // أضف العنصر إلى المفضلات
+                                Provider.of<ItemProvider>(context, listen: false).addItem(recipe!);
+                              },
+                              icon: Icon(Icons.favorite, size: 30),
+                            )
+                          ],
                         ),
+                       
                       ],
                     ),
                   ],
@@ -64,12 +79,12 @@ class CustomCategories extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
                 recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                height: 200,
+                height: 100,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(
                     'assets/imagesFood/download.png',
-                    height: 270,
+                    height: 100,
                   );
                 },
               ),

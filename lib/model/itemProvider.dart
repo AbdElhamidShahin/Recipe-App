@@ -1,53 +1,42 @@
-// import 'dart:convert';
-// import 'package:flutter/foundation.dart';
-// import 'package:recipes_app/model/articalmodel.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-//
-//
-// class ItemProvider with ChangeNotifier {
-//   Map<String, List<Recipe>> _items = {};
-//
-//   ItemProvider() {
-//     _loadItems();
-//   }
-//
-//   // Getter to retrieve items for a specific day
-//   List<Recipe> getItems(String day) {
-//     return _items[day] ?? [];
-//   }
-//
-//   // Method to add an exercise to a specific day
-//   void addItem(String day, Recipe item) {
-//     if (_items.containsKey(day)) {
-//       _items[day]?.add(item);
-//     } else {
-//       _items[day] = [item];
-//     }
-//     _saveItems();
-//     ('Item added to $day: ${item.name}'); // أضف هذا السطر
-//     notifyListeners();
-//   }
-//
-//   // Method to remove an exercise from a specific day
-//   void removeItem(String day, Recipe item) {
-//     _items[day]?.remove(item);
-//     _saveItems();
-//     notifyListeners();
-//   }
-//
-//   void _saveItems() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final data = _items.map((key, value) => MapEntry(key, jsonEncode(value)));
-//     await prefs.setString('items', jsonEncode(data));
-//   }
-//
-//   void _loadItems() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final data = prefs.getString('items');
-//     if (data != null) {
-//       final Map<String, dynamic> json = jsonDecode(data);
-//       _items = json.map((key, value) => MapEntry(key, (jsonDecode(value) as List).map((e) => Recipe.fromJson(e)).toList()));
-//       notifyListeners();
-//     }
-//   }
-// }
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'articalmodel.dart';
+
+class ItemProvider with ChangeNotifier {
+  List<Recipe> _items = [];
+
+  ItemProvider() {
+    _loadItems();
+  }
+
+  List<Recipe> get items => _items;
+
+  void addItem(Recipe item) {
+    _items.add(item);
+    _saveItems();
+    notifyListeners();
+  }
+
+  void removeItem(Recipe item) {
+    _items.remove(item);
+    _saveItems();
+    notifyListeners();
+  }
+
+  void _saveItems() async {
+    final prefs = await SharedPreferences.getInstance();
+    final data = jsonEncode(_items.map((item) => item.toJson()).toList());
+    await prefs.setString('favorite_items', data);
+  }
+
+  void _loadItems() async {
+    final prefs = await SharedPreferences.getInstance();
+    final data = prefs.getString('favorite_items');
+    if (data != null) {
+      final List<dynamic> json = jsonDecode(data);
+      _items = json.map((e) => Recipe.fromJson(e)).toList();
+      notifyListeners();
+    }
+  }
+}

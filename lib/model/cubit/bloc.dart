@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipes_app/model/cubit/states.dart';
+import 'package:recipes_app/view/screens/FavoriteScreen.dart';
 import 'package:recipes_app/view/screens/HomePage.dart';
 
 import '../../view/screens/HomeBody.dart';
@@ -11,22 +12,21 @@ import '../dio.dart';
 class FoodCubit extends Cubit<FoodState> {
   FoodCubit() : super((FoodIntiatialState()));
 
-  static FoodCubit get(context) =>
-      BlocProvider.of<FoodCubit>(context);
+  static FoodCubit get(context) => BlocProvider.of<FoodCubit>(context);
 
   int currentIndex = 0;
 
   List<BottomNavigationBarItem> bottomItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
+    BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
     BottomNavigationBarItem(
         icon: Icon(Icons.favorite_outline_rounded), label: 'Favorite'),
     BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
   ];
 
-  List<Widget> screens = const [
-    HomeBody(),
-    HomePage(),
-    HomeBody(),
+  List<Widget> screens = [
+    const HomeBody(),
+    Favorite(),
+    const HomeBody(),
   ];
 
   void changeBottomNavBar(int index) {
@@ -70,7 +70,6 @@ class FoodCubit extends Cubit<FoodState> {
   //     emit(FoodGetDataErrorState(  '1234')); // تمرير الخطأ هنا
   //   });
   // }
-
 
   // List<dynamic> Search = [];
   //
