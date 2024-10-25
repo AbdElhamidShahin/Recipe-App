@@ -13,10 +13,26 @@ class CustomCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CustomDetails(recipe: recipe),
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) => CustomDetails(recipe: recipe),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              const begin = Offset(1.0, 0.0); // من اليمين
+              const end = Offset.zero; // إلى المنتصف
+              const curve = Curves.easeInOut;
+
+              var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              var offsetAnimation = animation.drive(tween);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+              );
+            },
+            transitionDuration: const Duration(milliseconds: 600),
           ),
         );
       },
@@ -43,8 +59,7 @@ class CustomCategories extends StatelessWidget {
                       children: [
                         Text(
                           recipe?.name ?? 'اسم غير متاح',
-                          style: const TextStyle(
-                              color: Colors.black, fontSize: 20),
+                          style: const TextStyle(color: Colors.black, fontSize: 20),
                         ),
                         Row(
                           children: [
@@ -55,14 +70,12 @@ class CustomCategories extends StatelessWidget {
                             Spacer(),
                             IconButton(
                               onPressed: () {
-                                // أضف العنصر إلى المفضلات
                                 Provider.of<ItemProvider>(context, listen: false).addItem(recipe!);
                               },
-                              icon: Icon(Icons.favorite, size: 30),
+                              icon: const Icon(Icons.favorite, size: 30),
                             )
                           ],
                         ),
-                       
                       ],
                     ),
                   ],

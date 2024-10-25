@@ -3,7 +3,7 @@
     "id": "1",
     "name": "Spaghetti Bolognese",
     "description": "A classic Italian meat sauce served over pasta",
-    "imageUrl": "assets/images/spaghetti.png",
+    "imageUrl": "assets/images/spaghetti (1).png",
     "ingredients": ["spaghetti", "ground beef", "onions", "tomato sauce", "red wine"],
     "steps": ["Cook the spaghetti according to package directions.", "Brown the ground beef and onions.", "Add the tomato sauce and red wine and simmer for 1 hour.", "Toss with cooked spaghetti and serve."],
     "nutrition": {
@@ -30,7 +30,7 @@
     "id": "3",
     "name": "Caesar Salad",
     "description": "Romaine lettuce with creamy Caesar dressing, croutons and parmesan",
-    "imageUrl": "assets/images/salad.png",
+    "imageUrl": "assets/images/2 (1).png",
     "ingredients": ["romaine lettuce", "caesar dressing", "croutons", "parmesan"],
     "steps": ["Chop romaine lettuce.", "Toss with caesar dressing.", "Top with croutons and parmesan."],
     "nutrition": {
@@ -44,7 +44,7 @@
     "id": "4",
     "name": "Tacos",
     "description": "Soft tortilla shells filled with seasoned ground beef, lettuce, cheese and salsa",
-    "imageUrl": "assets/images/tacos.png",
+    "imageUrl": "assets/images/3 (1).png",
     "ingredients": ["tortillas", "ground beef", "lettuce", "cheese", "salsa"],
     "steps": ["Cook ground beef with taco seasoning.", "Warm tortillas.", "Fill with beef, lettuce, cheese and salsa."],
     "nutrition": {
@@ -72,7 +72,7 @@
     "id": "6",
     "name": "Cheese Pizza",
     "description": "Crispy crust with tomato sauce and mozzarella cheese",
-    "imageUrl": "assets/images/pizza.png",
+    "imageUrl": "assets/images/pizza (1).png",
     "ingredients": ["pizza dough", "tomato sauce", "mozzarella"],
     "steps": ["Stretch dough into rounds.", "Top with sauce and cheese.", "Bake until crust is crispy and cheese melted."],
     "nutrition": {
@@ -86,7 +86,7 @@
     "id": "7",
     "name": "Hamburger",
     "description": "Juicy beef patty with lettuce, tomato, onion and cheese on a bun",
-    "imageUrl": "assets/images/burger.png",
+    "imageUrl": "assets/TabBar_Image/images.webp",
     "ingredients": ["ground beef", "hamburger buns", "lettuce", "tomato", "onion", "cheese"],
     "steps": ["Form ground beef into patties and grill.", "Toast buns.", "Place patty on bun and top with lettuce, tomato, onion and cheese."],
     "nutrition": {

@@ -6,8 +6,9 @@ import 'package:recipes_app/model/cubit/states.dart';
 import 'package:recipes_app/view/screens/FavoriteScreen.dart';
 import 'package:recipes_app/view/screens/HomePage.dart';
 
+import '../../view/Wedget/tabpar.dart';
 import '../../view/screens/HomeBody.dart';
-import '../dio.dart';
+import '../ImageUpper.dart';
 
 class FoodCubit extends Cubit<FoodState> {
   FoodCubit() : super((FoodIntiatialState()));
@@ -17,14 +18,13 @@ class FoodCubit extends Cubit<FoodState> {
   int currentIndex = 0;
 
   List<BottomNavigationBarItem> bottomItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_outline_rounded), label: 'Favorite'),
+    BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home',),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite_outline_rounded), label: 'Favorite'),
     BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
   ];
 
   List<Widget> screens = [
-    const HomeBody(),
+    TabBarPage(),
     Favorite(),
     const HomeBody(),
   ];

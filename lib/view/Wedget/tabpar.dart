@@ -1,8 +1,6 @@
-import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-
+import 'package:recipes_app/model/ImageUpper.dart';
 import '../screens/StackScreen.dart';
-import 'CustomImage.dart';
 
 class TabBarPage extends StatefulWidget {
   @override
@@ -13,115 +11,86 @@ class _TabBarPageState extends State<TabBarPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
-      child: Column(
-        children: <Widget>[
-          ButtonsTabBar(
-            unselectedBackgroundColor: Colors.white,
-            labelStyle: const TextStyle(
-              fontWeight: FontWeight.bold,
+      length: 5, // عدد التابات
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.menu),
+                  Icon(Icons.search),
+                ],
+              ),
             ),
-            unselectedLabelStyle: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+            const SizedBox(height: 28),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'Good food.',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
             ),
-            height: 100,
-            radius: 0, // لجعل الحواف مربعة
-            buttonMargin: const EdgeInsets.symmetric(
-                horizontal: 16.0), // المسافة بين كل تبويب
-            tabs: [
-              Tab(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(16)), // الحواف المربعة
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0), // لضبط المسافة داخل التبويب
-                    child: CustomImage(
-                        text: 'Steak',
-                        image: 'assets/TabBar_Image/download.png'),
-                  ),
-                ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Fast Food.',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              Tab(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CustomImage(
-                        text: 'Desserts',
-                        image: 'assets/TabBar_Image/Dessertsjpeg.png'),
-                  ),
-                ),
-              ),
-              Tab(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CustomImage(
-                        text: 'Breakfast',
-                        image: 'assets/TabBar_Image/download.png'),
-                  ),
-                ),
-              ),
-              Tab(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CustomImage(
-                        text: 'Fast Food',
-                        image: 'assets/TabBar_Image/download.png'),
-                  ),
-                ),
-              ),
-              Tab(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: const BorderRadius.all(Radius.circular(16)),
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CustomImage(
-                        text: 'Sea Food',
-                        image: 'assets/TabBar_Image/Sea Food.png'),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: 600,
-            child: TabBarView(
-              children: [
-                Stackscreen(),
-                Stackscreen(),
-                Stackscreen(),
-                Stackscreen(),
-                Stackscreen(),
-              ],
             ),
-          ),
-        ],
+
+            // الـ TabBar
+            Container(
+              margin: const EdgeInsets.only(top: 0), // إزالة المسافة العلوية
+              padding: EdgeInsets.zero, // إزالة أي Padding غير مطلوب
+              child: const TabBar(
+                isScrollable: true,
+                indicatorColor: Colors.transparent, // إزالة الخط الفاصل السفلي
+                indicatorSize: TabBarIndicatorSize.label, // تقليل حجم المؤشر إذا لزم الأمر
+                labelPadding: EdgeInsets.symmetric(horizontal: 10.0), // تقليل المسافات بين التابات
+                tabs: [
+                  ImageUpper(
+                    image: 'assets/TabBar_Image/Breakfast.png',
+                    text: 'Electronics',
+                  ),
+                  ImageUpper(
+                    image: 'assets/TabBar_Image/tasty-grilled-steak-on-white-600w-1167071881.webp',
+                    text: 'Jewelry',
+                  ),
+                  ImageUpper(
+                    image: 'assets/TabBar_Image/Sea Food.png',
+                    text: 'Men',
+                  ),
+                  ImageUpper(
+                    image: 'assets/TabBar_Image/Fast Food.jpeg',
+                    text: 'Women',
+                  ),
+                  ImageUpper(
+                    image: 'assets/TabBar_Image/Dessertsjpeg.png',
+                    text: 'Women',
+                  ),
+                ],
+              ),
+            ),
+
+            // المحتوى السفلي TabBarView
+            Expanded(
+              child: TabBarView(
+                children: [
+                  Stackscreen(),
+                  Stackscreen(),
+                  Stackscreen(),
+                  Stackscreen(),
+                  Stackscreen(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
