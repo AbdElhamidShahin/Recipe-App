@@ -1,23 +1,57 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:recipes_app/view/Wedget/IconText_CustomDetails.dart';
-import 'package:recipes_app/view/Wedget/Ingredients_Screen.dart';
-import '../../model/articalmodel.dart';
 
-class StartCookingScreen extends StatelessWidget {
-  final Recipe? recipe; // Keep only the relevant parameter
-  final Nutrition? nutrition; // Keep only the relevant parameter
+import '../../model/articalmodel.dart';
+import '../Wedget/IconText_CustomDetails.dart';
+import '../Wedget/Ingredients_Screen.dart';
+
+class StartCookingScreen extends StatefulWidget {
+  final Recipe? recipe;
+  final Nutrition? nutrition;
 
   const StartCookingScreen({
     super.key,
     required this.recipe,
     this.nutrition,
-  }); // Make it required for clarity
+  });
+
+  @override
+  _StartCookingScreenState createState() => _StartCookingScreenState();
+}
+
+class _StartCookingScreenState extends State<StartCookingScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  late Animation<double> _scaleAnimation;
+  late Animation<Color?> _colorAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    )..repeat(); // Repeats the animation indefinitely
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+    _scaleAnimation = Tween<double>(begin: 1, end: 1.2).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ));
+    _colorAnimation = ColorTween(begin: Colors.black, end: Colors.red).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Color.fromRGBO(42, 45, 52, 1), // شفافية كاملة (بدون شفافية)
+      backgroundColor: Color.fromRGBO(42, 45, 52, 1),
       body: Stack(
         children: [
           Positioned(
@@ -28,22 +62,21 @@ class StartCookingScreen extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Container(
-                height: 100, // حدد الارتفاع الذي تريده للصورة
-                width: double.infinity, // عرض الصورة بكامل الشاشة
+                height: 100,
+                width: double.infinity,
                 child: Image.asset(
-                  recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                  fit: BoxFit.cover, // تعديل الحشو ليناسب الأبعاد
+                  widget.recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                  fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Image.asset(
                       'assets/imagesFood/download.png',
-                      fit: BoxFit.cover, // تأكد من ضبط الأبعاد هنا أيضاً
+                      fit: BoxFit.cover,
                     );
                   },
                 ),
               ),
             ),
           ),
-
           Positioned(
             bottom: 0,
             left: 0,
@@ -58,42 +91,34 @@ class StartCookingScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 24,
-                    ),
+                    SizedBox(height: 24),
                     Text(
-                      recipe?.name ?? '',
+                      widget.recipe?.name ?? '',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     Center(
                       child: Text(
-                        recipe?.description ?? '',
+                        widget.recipe?.description ?? '',
                         style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w300,
                             color: Colors.black54),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     Row(
-
                       children: [
-
                         IconText(
-                          text: "${recipe?.nutrition.calories} Kcal",
+                          text: "${widget.recipe?.nutrition.calories} Kcal",
                           image: 'assets/imagesFood/22.jpeg',
                         ),
                         Spacer(),
                         IconText(
-                          text: "${recipe?.nutrition.protein} Fats      ",
+                          text: "${widget.recipe?.nutrition.calories} Fats",
                           image: 'assets/imagesFood/star.jpeg',
                         ),
                       ],
@@ -102,29 +127,30 @@ class StartCookingScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconText(
-                          text: "${recipe?.nutrition.calories} Carbs",
+                          text: "${widget.recipe?.nutrition.calories} Carbs",
                           image: 'assets/imagesFood/22.jpeg',
                         ),
                         Spacer(),
                         IconText(
-                          text: "${recipe?.nutrition.protein} Protine",
+                          text: "${widget.recipe?.nutrition.protein} Protein",
                           image: 'assets/imagesFood/star.jpeg',
                         ),
                       ],
                     ),
                     Text(
                       "Steps",
-                      style:
-                          TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
-                    if (recipe?.steps != null && recipe!.steps!.isNotEmpty)
+                    if (widget.recipe?.steps != null &&
+                        widget.recipe!.steps!.isNotEmpty)
                       Container(
                         height: 220,
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: recipe!.steps.map((steps) {
+                            children: widget.recipe!.steps.map((steps) {
                               return Ingredients(
                                 text1: steps,
                               );
@@ -138,23 +164,31 @@ class StartCookingScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                       ),
                     SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Center(
-                        child: Text(
-                          "End Recipe",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
+
+                    // Enhanced animation with rotation, scaling, and color change
+                    RotationTransition(
+                      turns: _animation,
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: _colorAnimation.value,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 16),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Center(
+                            child: Text(
+                              "End Recipe",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -164,7 +198,6 @@ class StartCookingScreen extends StatelessWidget {
               ),
             ),
           ),
-          // تعديل حجم الصورة والتحكم به
         ],
       ),
     );

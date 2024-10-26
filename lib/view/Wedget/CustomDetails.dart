@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/view/Wedget/IconText_CustomDetails.dart';
 import 'package:recipes_app/view/Wedget/Ingredients_Screen.dart';
-import 'package:recipes_app/view/Wedget/tabpar.dart';
 import '../../model/articalmodel.dart';
-import '../../model/ImageUpper.dart';
 import '../screens/StartCookingScreen.dart';
 
 class CustomDetails extends StatelessWidget {
-  final Recipe? recipe; // Keep only the relevant parameter
-  final Nutrition? nutrition; // Keep only the relevant parameter
+  final Recipe? recipe;
+  final Nutrition? nutrition;
 
   const CustomDetails({
     super.key,
     required this.recipe,
     this.nutrition,
-  }); // Make it required for clarity
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-      Color.fromRGBO(42, 45, 52, 1), // شفافية كاملة (بدون شفافية)
+      backgroundColor: Color.fromRGBO(42, 45, 52, 1),
       body: Stack(
         children: [
           Positioned(
@@ -31,15 +28,13 @@ class CustomDetails extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 120,
-                    ),
+                    SizedBox(height: 120),
                     Center(
                       child: Text(
                         recipe?.name ?? '',
@@ -50,34 +45,27 @@ class CustomDetails extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconText(
-                              text: "${recipe?.nutrition.prepTime} min",
-                              image: 'assets/imagesFood/timer.jpeg',
-                            ),
-                            IconText(
-                              text: "${recipe?.nutrition.calories} calories",
-                              image: 'assets/imagesFood/22.jpeg',
-                            ),
-                            IconText(
-                              text: "${recipe?.nutrition.protein} ",
-                              image: 'assets/imagesFood/star.jpeg',
-                            ),
-                          ],
+                        IconText(
+                          text: "${recipe?.nutrition.prepTime} min",
+                          image: 'assets/imagesFood/timer.jpeg',
+                        ),
+                        IconText(
+                          text: "${recipe?.nutrition.calories} calories",
+                          image: 'assets/imagesFood/22.jpeg',
+                        ),
+                        IconText(
+                          text: "${recipe?.nutrition.protein} g",
+                          image: 'assets/imagesFood/star.jpeg',
                         ),
                       ],
                     ),
                     SizedBox(height: 10),
                     Text(
                       "Ingredients",
-                      style:
-                      TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     if (recipe?.steps != null && recipe!.steps!.isNotEmpty)
@@ -109,10 +97,35 @@ class CustomDetails extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: 16),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => StartCookingScreen(recipe: recipe,)),
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) => StartCookingScreen(recipe: recipe),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              var scaleAnimation = Tween<double>(
+                                begin: 0.5, // بداية التكبير
+                                end: 1.0, // النهاية
+                              ).animate(CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ));
+
+                              var fadeAnimation = Tween<double>(
+                                begin: 0.0,
+                                end: 1.0,
+                              ).animate(CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ));
+
+                              return ScaleTransition(
+                                scale: scaleAnimation,
+                                child: FadeTransition(
+                                  opacity: fadeAnimation,
+                                  child: child,
+                                ),
+                              );
+                            },
+                          ),
                         );
                       },
                       child: Center(
@@ -130,26 +143,28 @@ class CustomDetails extends StatelessWidget {
               ),
             ),
           ),
-          // تعديل حجم الصورة والتحكم به
           Positioned(
             top: 0,
             right: 0,
             left: 0,
             bottom: 460,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
               child: Container(
-                height: 100, // حدد الارتفاع الذي تريده للصورة
-                width: double.infinity, // عرض الصورة بكامل الشاشة
-                child: Image.asset(
-                  recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                  fit: BoxFit.cover, // تعديل الحشو ليناسب الأبعاد
-                  errorBuilder: (context, error, stackTrace) {
-                    return Image.asset(
-                      'assets/imagesFood/download.png',
-                      fit: BoxFit.cover, // تأكد من ضبط الأبعاد هنا أيضاً
-                    );
-                  },
+                height: 100,
+                width: double.infinity,
+                child: Hero(
+                  tag: recipe?.imageUrl ?? 'default-hero',
+                  child: Image.asset(
+                    recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'assets/imagesFood/download.png',
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

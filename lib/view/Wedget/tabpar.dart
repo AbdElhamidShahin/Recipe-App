@@ -43,37 +43,39 @@ class _TabBarPageState extends State<TabBarPage> {
               ),
             ),
 
-            // الـ TabBar
-            Container(
-              margin: const EdgeInsets.only(top: 0), // إزالة المسافة العلوية
-              padding: EdgeInsets.zero, // إزالة أي Padding غير مطلوب
-              child: const TabBar(
-                isScrollable: true,
-                indicatorColor: Colors.transparent, // إزالة الخط الفاصل السفلي
-                indicatorSize: TabBarIndicatorSize.label, // تقليل حجم المؤشر إذا لزم الأمر
-                labelPadding: EdgeInsets.symmetric(horizontal: 10.0), // تقليل المسافات بين التابات
-                tabs: [
-                  ImageUpper(
-                    image: 'assets/TabBar_Image/Breakfast.png',
-                    text: 'Electronics',
-                  ),
-                  ImageUpper(
-                    image: 'assets/TabBar_Image/tasty-grilled-steak-on-white-600w-1167071881.webp',
-                    text: 'Jewelry',
-                  ),
-                  ImageUpper(
-                    image: 'assets/TabBar_Image/Sea Food.png',
-                    text: 'Men',
-                  ),
-                  ImageUpper(
-                    image: 'assets/TabBar_Image/Fast Food.jpeg',
-                    text: 'Women',
-                  ),
-                  ImageUpper(
-                    image: 'assets/TabBar_Image/Dessertsjpeg.png',
-                    text: 'Women',
-                  ),
-                ],
+            // TabBar داخل PreferredSize لضبط الترتيب والحواف
+            PreferredSize(
+              preferredSize: Size.fromHeight(50.0),
+              child: Container(
+                color: Colors.white, // يمكنك تغيير اللون هنا إذا كنت تريد خلفية مختلفة
+                child: const TabBar(
+                  isScrollable: true,
+                  indicatorColor: Colors.transparent, // إزالة الخط الفاصل السفلي
+                  indicatorSize: TabBarIndicatorSize.label, // تقليل حجم المؤشر إذا لزم الأمر
+                  labelPadding: EdgeInsets.symmetric(horizontal: 10.0), // تقليل المسافات بين التابات
+                  tabs: [
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/Breakfast.png',
+                      text: 'Electronics',
+                    ),
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/tasty-grilled-steak-on-white-600w-1167071881.webp',
+                      text: 'Jewelry',
+                    ),
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/Sea Food.png',
+                      text: 'Men',
+                    ),
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/Fast Food.jpeg',
+                      text: 'Women',
+                    ),
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/Dessertsjpeg.png',
+                      text: 'Women',
+                    ),
+                  ],
+                ),
               ),
             ),
 

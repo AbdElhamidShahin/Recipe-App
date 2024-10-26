@@ -26,7 +26,7 @@ class FoodCubit extends Cubit<FoodState> {
   List<Widget> screens = [
     TabBarPage(),
     Favorite(),
-    const HomeBody(),
+     Favorite(),
   ];
 
   void changeBottomNavBar(int index) {

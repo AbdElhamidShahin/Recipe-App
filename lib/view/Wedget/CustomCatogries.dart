@@ -13,28 +13,28 @@ class CustomCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) => CustomDetails(recipe: recipe),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              const begin = Offset(1.0, 0.0); // من اليمين
-              const end = Offset.zero; // إلى المنتصف
-              const curve = Curves.easeInOut;
+        if (recipe != null) {
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => CustomDetails(recipe: recipe),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                var sizeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(parent: animation, curve: Curves.easeInOutCubic),
+                );
 
-              var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-              var offsetAnimation = animation.drive(tween);
-
-              return SlideTransition(
-                position: offsetAnimation,
-                child: FadeTransition(
-                  opacity: animation,
-                  child: child,
-                ),
-              );
-            },
-            transitionDuration: const Duration(milliseconds: 600),
-          ),
-        );
+                return SizeTransition(
+                  sizeFactor: sizeAnimation,
+                  axisAlignment: 0.0,
+                  child: FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                );
+              },
+              transitionDuration: const Duration(milliseconds: 600),
+            ),
+          );
+        }
       },
       child: Stack(
         children: [
@@ -53,7 +53,7 @@ class CustomCategories extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -63,17 +63,19 @@ class CustomCategories extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            const Text(
-                              '⏱ 15 Mins',
-                              style: TextStyle(color: Colors.black, fontSize: 12),
+                            Text(
+                              '⏱ ${recipe?.nutrition.prepTime ?? 15} Mins',
+                              style: const TextStyle(color: Colors.black, fontSize: 12),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             IconButton(
                               onPressed: () {
-                                Provider.of<ItemProvider>(context, listen: false).addItem(recipe!);
+                                if (recipe != null) {
+                                  Provider.of<ItemProvider>(context, listen: false).addItem(recipe!);
+                                }
                               },
                               icon: const Icon(Icons.favorite, size: 30),
-                            )
+                            ),
                           ],
                         ),
                       ],
@@ -88,18 +90,21 @@ class CustomCategories extends StatelessWidget {
             right: 0,
             left: 0,
             bottom: 100,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                height: 100,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    'assets/imagesFood/download.png',
-                    height: 100,
-                  );
-                },
+            child: Hero(
+              tag: recipe?.imageUrl ?? 'default-hero',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                  height: 100,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      'assets/imagesFood/download.png',
+                      height: 100,
+                    );
+                  },
+                ),
               ),
             ),
           ),
