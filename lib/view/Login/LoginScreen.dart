@@ -61,12 +61,13 @@ class Loginscreen extends StatelessWidget {
                         },
                         hintText: 'Email',
                         lableText: 'Email',
+                        obscureText: false,
                       ),
                       Customtextfeild(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter the password';
-                          } else if (value.length > 8) {
+                          } else if (value.length < 8) {
                             return 'Must be at least 6 chars';
                           }
 
@@ -74,6 +75,7 @@ class Loginscreen extends StatelessWidget {
                         },
                         hintText: 'PassWord',
                         lableText: 'PassWord',
+                        obscureText: true,
                       ),
                       TextButton(
                         onPressed: () {},

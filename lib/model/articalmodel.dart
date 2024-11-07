@@ -21,7 +21,6 @@ class Recipe {
     required this.steps,
     this.nutrition,
     required this.isFavorite,
-
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -32,9 +31,10 @@ class Recipe {
       imageUrl: json['imageUrl'] as String? ?? 'assets/images/default.png',
       ingredients: List<String>.from(json['ingredients'] ?? []),
       steps: List<String>.from(json['steps'] ?? []),
-      nutrition: json['nutrition'] != null ? Nutrition.fromJson(json['nutrition']) : null,
-      isFavorite: json['isFavorite'] ??
-          false,
+      nutrition: json['nutrition'] != null
+          ? Nutrition.fromJson(json['nutrition'])
+          : null,
+      isFavorite: json['isFavorite'] ?? false,
     );
   }
   Map<String, dynamic> toJson() {

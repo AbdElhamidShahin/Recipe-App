@@ -15,7 +15,7 @@ Future<Map<String, List<Recipe>>> fetchRecipeFromJson(BuildContext context) asyn
     });
     return recipeMap;
   } catch (e) {
-    print("Error fetching recipes: $e");
+    print("Error fetching recipes");
     throw e; // Re-throwing the error for higher-level handling
   }
 }

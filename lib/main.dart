@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipes_app/view/Login/LoginScreen.dart';
-import 'package:recipes_app/view/screens/HomePage.dart';
 import 'model/itemProvider.dart';
 
 void main() {
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         scaffoldBackgroundColor: Color(0xFFedefec),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromRGBO(255, 241, 242, 1),
+          backgroundColor:Color(0xFFedefec),
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
           titleTextStyle: TextStyle(

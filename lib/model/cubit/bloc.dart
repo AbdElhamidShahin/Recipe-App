@@ -7,7 +7,6 @@ import 'package:recipes_app/view/screens/FavoriteScreen.dart';
 import '../../view/Wedget/tabpar.dart';
 import '../../view/screens/AccountScreen.dart';
 
-
 class FoodCubit extends Cubit<FoodState> {
   FoodCubit() : super((FoodIntiatialState()));
 
@@ -29,7 +28,7 @@ class FoodCubit extends Cubit<FoodState> {
   List<Widget> screens = [
     TabBarPage(),
     const Favorite(),
-     Settings(),
+    Settings(),
   ];
 
   void changeBottomNavBar(int index) {
@@ -37,6 +36,4 @@ class FoodCubit extends Cubit<FoodState> {
     if (index == 0) {}
     emit(FoodBottomnavBarState());
   }
-
-
 }

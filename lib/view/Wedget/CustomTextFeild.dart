@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Customtextfeild extends StatelessWidget {
-  const Customtextfeild(
+   Customtextfeild(
       {super.key,
+        required this.obscureText,
       required this.hintText,
       required this.lableText,
       this.validator});
   final String hintText;
   final String lableText;
+  bool obscureText =false;
   final String? Function(String?)? validator; // إضافة المعامل للـ validator
 
   @override
@@ -15,6 +17,8 @@ class Customtextfeild extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
       child: TextFormField(
+        obscureText: obscureText,  // إخفاء النص المُدخل
+
         validator: validator,
         style: const TextStyle(
           color: Colors.white, // لون النص عند الكتابة
