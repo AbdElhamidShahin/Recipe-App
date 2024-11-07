@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Ingredients extends StatelessWidget {
-  const Ingredients({super.key, required this.text1, });
-final String text1;
+  const Ingredients({
+    super.key,
+    required this.text1,
+  });
+  final String text1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +23,14 @@ final String text1;
                 children: [
                   Expanded(
                     child: Text(
-                     text1,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      text1,
+                      style: const TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
-
         ],
       ),
     );

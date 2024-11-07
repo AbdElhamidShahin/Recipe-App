@@ -19,9 +19,15 @@ class Loginscreen extends StatelessWidget {
           children: [
             // الصورة الخلفية الثابتة
             Positioned.fill(
-              child: Image.asset(
-                'assets/imagesFood/img1.wallspic.com-food-blue-recipe-fluid-cooking-1421x3000.jpg',
-                fit: BoxFit.cover,
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5),
+                  BlendMode.darken,
+                ),
+                child: Image.asset(
+                  'assets/food/SeaFood/293364-wallpaper-1080-2280.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
 
@@ -35,11 +41,11 @@ class Loginscreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Welcome!',
                         style: TextStyle(color: Colors.white, fontSize: 45),
                       ),
-                      Text(
+                      const Text(
                         'Time to cook, let\'s Sign in',
                         style: TextStyle(color: Colors.grey, fontSize: 18),
                       ),
@@ -71,7 +77,7 @@ class Loginscreen extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Forgot password?',
                           style: TextStyle(color: Colors.amber, fontSize: 16),
                         ),
@@ -86,24 +92,26 @@ class Loginscreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: TextButton(
-
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('Processing Data')),
+                                  const SnackBar(
+                                      content: Text('Processing Data')),
                                 );
 
                                 Navigator.push(
                                   context,
                                   PageTransition(
-                                    type: PageTransitionType.fade, // أو استخدم PageTransitionType.slideRight أو غيرها
-                                    duration: Duration(milliseconds: 500), // مدة الانتقال
-                                    child: HomePage(),
+                                    type: PageTransitionType
+                                        .fade, // أو استخدم PageTransitionType.slideRight أو غيرها
+                                    duration: const Duration(
+                                        milliseconds: 500), // مدة الانتقال
+                                    child: const HomePage(),
                                   ),
                                 );
                               }
                             },
-                            child: Text(
+                            child: const Text(
                               'SIGN IN',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 20),
@@ -111,8 +119,8 @@ class Loginscreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
-                      Row(
+                      const SizedBox(height: 16),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -125,7 +133,7 @@ class Loginscreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),

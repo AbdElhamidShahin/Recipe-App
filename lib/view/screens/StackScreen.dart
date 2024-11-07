@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/model/articalmodel.dart';
-
 import '../../model/JsonScrren.dart';
 import '../Wedget/CustomCatogries.dart';
 
-class Stackscreen extends StatelessWidget {
-  final Recipe? recipe;
+class StacksScreen extends StatelessWidget {
+  final String category;
 
-  Stackscreen({super.key, this.recipe});
+  StacksScreen({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Recipe>>(
+    return FutureBuilder<Map<String, List<Recipe>>>(
       future: fetchRecipeFromJson(context),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -22,7 +21,7 @@ class Stackscreen extends StatelessWidget {
           return Center(child: Text('No recipes found'));
         }
 
-        final List<Recipe> recipes = snapshot.data!;
+        final items = snapshot.data![category] ?? [];
 
         return Scaffold(
           body: GridView.builder(
@@ -30,12 +29,12 @@ class Stackscreen extends StatelessWidget {
               crossAxisCount: 2,
               childAspectRatio: 0.7,
             ),
-            itemCount: recipes.length,
+            itemCount: items.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: CustomCategories(
-                  recipe: recipes[index],
+                  recipe: items[index],
                 ),
               );
             },

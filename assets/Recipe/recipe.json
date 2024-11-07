@@ -1,211 +1,607 @@
-[{
-  "id": "1",
-  "name": "Spaghetti Bolognese",
-  "description": "A classic Italian meat sauce served over pasta",
-  "imageUrl": "assets/images/spaghetti (1).png",
-  "ingredients": [
-    "spaghetti",
-    "ground beef",
-    "onions",
-    "tomato sauce",
-    "red wine"
+
+
+
+{
+
+
+
+
+  "breakfast": [
+    {
+      "id": "1",
+      "name": "Avocado Toast",
+      "description": "Two slices of toast with mashed avocado and some seasoning.",
+      "imageUrl": "assets/food/BreakFast/avocado-toast-white-plate-white-background_864588-11722.png",
+      "ingredients": [
+        "2 slices of toast",
+        "1 avocado",
+        "Pinch of salt",
+        "Black pepper"
+      ],
+      "steps": [
+        "Spread the mashed avocado on the toast.",
+        "Sprinkle salt and pepper to taste."
+      ],
+      "nutrition": {
+        "calories": 250,
+        "protein": 6,
+        "prepTime": 10
+      }
+    },
+
+    {
+      "id": "3",
+      "name": "Greek Yogurt with Berries",
+      "description": "A healthy yogurt bowl topped with fresh berries and a drizzle of honey.",
+      "imageUrl": "assets/food/BreakFast/pngtree-healthy-greek-yogurt-and-fresh-berry-snack-with-a-medley-of-png-image_13581441.png",
+      "ingredients": [
+        "1 cup Greek yogurt",
+        "1/4 cup strawberries",
+        "1/4 cup blueberries",
+        "1 tsp honey"
+      ],
+      "steps": [
+        "Add Greek yogurt to a bowl.",
+        "Top with berries and drizzle honey over it."
+      ],
+      "nutrition": {
+        "calories": 200,
+        "protein": 10,
+        "prepTime": 5
+      }
+    },
+    {
+      "id": "4",
+      "name": "Oatmeal with Banana and Nuts",
+      "description": "Warm oatmeal topped with banana slices and crunchy nuts.",
+      "imageUrl": "assets/food/BreakFast/pngtree-a-bowl-of-oatmeal-with-fruit-and-nuts-sits-png-image_10717255.png",
+      "ingredients": [
+        "1/2 cup oats",
+        "1 cup milk or water",
+        "1 banana, sliced",
+        "1 tbsp chopped nuts"
+      ],
+      "steps": [
+        "Cook oats in milk or water as per package instructions.",
+        "Top with banana slices and nuts before serving."
+      ],
+      "nutrition": {
+        "calories": 300,
+        "protein": 8,
+        "prepTime": 10
+      }
+    }
   ],
-  "steps": [
-    "Cook the spaghetti according to package directions.",
-    "Brown the ground beef and onions.",
-    "Add the tomato sauce and red wine and simmer for 1 hour.",
-    "Toss with cooked spaghetti and serve."
+  "diner": [
+    {
+      "id": "1",
+      "name": "Spaghetti Bolognese",
+      "description": "A classic Italian meat sauce served over pasta",
+      "imageUrl": "assets/images/spaghetti (1).png",
+      "ingredients": [
+        "spaghetti",
+        "ground beef",
+        "onions",
+        "tomato sauce",
+        "red wine"
+      ],
+      "steps": [
+        "Cook the spaghetti according to package directions.",
+        "Brown the ground beef and onions.",
+        "Add the tomato sauce and red wine and simmer for 1 hour.",
+        "Toss with cooked spaghetti and serve."
+      ],
+      "nutrition": {
+        "calories": 650,
+        "protein": 4,
+        "prepTime": 60
+      }
+    },
+    {
+      "id": "2",
+      "name": "Chicken Parmesan",
+      "description": "Breaded chicken breast topped with tomato sauce and mozzarella",
+      "imageUrl": "assets/images/chicken.png",
+      "ingredients": [
+        "chicken breasts",
+        "breadcrumbs",
+        "parmesan",
+        "tomato sauce",
+        "mozzarella"
+      ],
+      "steps": [
+        "Bread chicken breasts with breadcrumbs.",
+        "Pan fry until golden brown.",
+        "Top with tomato sauce and mozzarella.",
+        "Bake until cheese is melted."
+      ],
+      "nutrition": {
+        "calories": 550,
+        "protein": 4,
+        "prepTime": 30
+      }
+    },
+    {
+      "id": "3",
+      "name": "Caesar Salad",
+      "description": "Romaine lettuce with creamy Caesar dressing, croutons and parmesan",
+      "imageUrl": "assets/images/2 (1).png",
+      "ingredients": [
+        "romaine lettuce",
+        "caesar dressing",
+        "croutons",
+        "parmesan"
+      ],
+      "steps": [
+        "Chop romaine lettuce.",
+        "Toss with caesar dressing.",
+        "Top with croutons and parmesan."
+      ],
+      "nutrition": {
+        "calories": 250,
+        "protein": 4,
+        "prepTime": 10
+      }
+    },
+    {
+      "id": "5",
+      "name": "Pasta Alfredo",
+      "description": "Fettuccine pasta tossed in a rich, creamy parmesan cheese sauce",
+      "imageUrl": "assets/images/alfredo.png",
+      "ingredients": [
+        "fettuccine",
+        "butter",
+        "cream",
+        "parmesan"
+      ],
+      "steps": [
+        "Cook pasta according to package directions.",
+        "Melt butter in a pan.",
+        "Add cream and parmesan and cook until thick and creamy.",
+        "Toss pasta with sauce."
+      ],
+      "nutrition": {
+        "calories": 800,
+        "protein": 4,
+        "prepTime": 15
+      }
+    },
+    {
+      "id": "9",
+      "name": "Chicken Fried Rice",
+      "description": "Rice stir-fried with chicken, vegetables and egg",
+      "imageUrl": "assets/images/rice.png",
+      "ingredients": [
+        "rice",
+        "chicken",
+        "vegetables",
+        "egg",
+        "soy sauce"
+      ],
+      "steps": [
+        "Cook rice.",
+        "Stir fry chicken and vegetables.",
+        "Add rice and stir fry.",
+        "Scramble egg and mix in.",
+        "Season with soy sauce."
+      ],
+      "nutrition": {
+        "calories": 450,
+        "protein": 4,
+        "prepTime": 30
+      }
+    }
   ],
-  "nutrition": {
-    "calories": 650,
-    "protein": 4,
-    "prepTime": 60
-  }
-},
-        {
-          "id": "2",
-          "name": "Chicken Parmesan",
-          "description": "Breaded chicken breast topped with tomato sauce and mozzarella",
-          "imageUrl": "assets/images/chicken.png",
-          "ingredients": [
-            "chicken breasts",
-            "breadcrumbs",
-            "parmesan",
-            "tomato sauce",
-            "mozzarella"
-          ],
-          "steps": [
-            "Bread chicken breasts with breadcrumbs.",
-            "Pan fry until golden brown.",
-            "Top with tomato sauce and mozzarella.",
-            "Bake until cheese is melted."
-          ],
-          "nutrition": {
-            "calories": 550,
-            "protein": 4,
-            "prepTime": 30
-          }
-        },
-        {
-          "id": "3",
-          "name": "Caesar Salad",
-          "description": "Romaine lettuce with creamy Caesar dressing, croutons and parmesan",
-          "imageUrl": "assets/images/2 (1).png",
-          "ingredients": [
-            "romaine lettuce",
-            "caesar dressing",
-            "croutons",
-            "parmesan"
-          ],
-          "steps": [
-            "Chop romaine lettuce.",
-            "Toss with caesar dressing.",
-            "Top with croutons and parmesan."
-          ],
-          "nutrition": {
-            "calories": 250,
-            "protein": 4,
-            "prepTime": 10
-          }
-        },
-        {
-          "id": "4",
-          "name": "Tacos",
-          "description": "Soft tortilla shells filled with seasoned ground beef, lettuce, cheese and salsa",
-          "imageUrl": "assets/images/3 (1).png",
-          "ingredients": [
-            "tortillas",
-            "ground beef",
-            "lettuce",
-            "cheese",
-            "salsa"
-          ],
-          "steps": [
-            "Cook ground beef with taco seasoning.",
-            "Warm tortillas.",
-            "Fill with beef, lettuce, cheese and salsa."
-          ],
-          "nutrition": {
-            "calories": 500,
-            "protein": 4,
-            "prepTime": 20
-          }
-        },
-        {
-          "id": "5",
-          "name": "Pasta Alfredo",
-          "description": "Fettuccine pasta tossed in a rich, creamy parmesan cheese sauce",
-          "imageUrl": "assets/images/alfredo.png",
-          "ingredients": [
-            "fettuccine",
-            "butter",
-            "cream",
-            "parmesan"
-          ],
-          "steps": [
-            "Cook pasta according to package directions.",
-            "Melt butter in a pan.",
-            "Add cream and parmesan and cook until thick and creamy.",
-            "Toss pasta with sauce."
-          ],
-          "nutrition": {
-            "calories": 800,
-            "protein": 4,
-            "prepTime": 15
-          }
-        },
-        {
-          "id": "6",
-          "name": "Cheese Pizza",
-          "description": "Crispy crust with tomato sauce and mozzarella cheese",
-          "imageUrl": "assets/images/pizza (1).png",
-          "ingredients": [
-            "pizza dough",
-            "tomato sauce",
-            "mozzarella"
-          ],
-          "steps": [
-            "Stretch dough into rounds.",
-            "Top with sauce and cheese.",
-            "Bake until crust is crispy and cheese melted."
-          ],
-          "nutrition": {
-            "calories": 700,
-            "protein": 4,
-            "prepTime": 40
-          }
-        },
-        {
-          "id": "7",
-          "name": "Hamburger",
-          "description": "Juicy beef patty with lettuce, tomato, onion and cheese on a bun",
-          "imageUrl": "assets/TabBar_Image/images.webp",
-          "ingredients": [
-            "ground beef",
-            "hamburger buns",
-            "lettuce",
-            "tomato",
-            "onion",
-            "cheese"
-          ],
-          "steps": [
-            "Form ground beef into patties and grill.",
-            "Toast buns.",
-            "Place patty on bun and top with lettuce, tomato, onion and cheese."
-          ],
-          "nutrition": {
-            "calories": 650,
-            "protein": 4,
-            "prepTime": 15
-          }
-        },
-        {
-          "id": "8",
-          "name": "Chocolate Chip Cookies",
-          "description": "Chewy cookies filled with chocolate chips",
-          "imageUrl": "assets/images/cookies.png",
-          "ingredients": [
-            "flour",
-            "butter",
-            "sugar",
-            "eggs",
-            "chocolate chips"
-          ],
-          "steps": [
-            "Cream butter and sugar.",
-            "Beat in eggs.",
-            "Stir in flour and chocolate chips.",
-            "Scoop dough and bake."
-          ],
-          "nutrition": {
-            "calories": 200,
-            "protein": 4,
-            "prepTime": 30
-          }
-        },
-        {
-          "id": "9",
-          "name": "Chicken Fried Rice",
-          "description": "Rice stir-fried with chicken, vegetables and egg",
-          "imageUrl": "assets/images/rice.png",
-          "ingredients": [
-            "rice",
-            "chicken",
-            "vegetables",
-            "egg",
-            "soy sauce"
-          ],
-          "steps": [
-            "Cook rice.",
-            "Stir fry chicken and vegetables.",
-            "Add rice and stir fry.",
-            "Scramble egg and mix in.",
-            "Season with soy sauce."
-          ],
-          "nutrition": {
-            "calories": 450,
-            "protein": 4,
-            "prepTime": 30
-          }
-        }
-]
+
+  "desserts": [
+    {
+      "name": "Chocolate Lava Cake",
+      "description": "A rich and decadent chocolate cake with a gooey molten center.",
+      "imageUrl": "assets/food/deserts/images (1).png",
+      "ingredients": [
+        "1/2 cup unsalted butter",
+        "1 cup dark chocolate chips",
+        "1 cup powdered sugar",
+        "2 large eggs",
+        "2 large egg yolks",
+        "1 teaspoon vanilla extract",
+        "1/4 cup all-purpose flour",
+        "Pinch of salt"
+      ],
+      "steps": [
+        "Preheat the oven to 425°F (220°C) and grease four ramekins.",
+        "In a microwave-safe bowl, melt the butter and chocolate together until smooth.",
+        "Stir in the powdered sugar until well combined.",
+        "Add the eggs, egg yolks, and vanilla extract. Mix until smooth.",
+        "Gently fold in the flour and salt until just combined.",
+        "Divide the batter among the ramekins and place them on a baking sheet.",
+        "Bake for 12-14 minutes, until the edges are firm but the center is soft.",
+        "Let cool for 1 minute, then invert onto plates and serve immediately."
+      ],
+      "nutrition": {
+        "calories": 400,
+        "protein": 6,
+        "fat": 25,
+        "carbohydrates": 45
+      }
+    },
+    {
+      "name": "Tiramisu",
+      "description": "A classic Italian dessert made with coffee-soaked ladyfingers and creamy mascarpone cheese.",
+      "imageUrl": "assets/food/deserts/classic-italian-tiramisu-cake-isolated-on-transparent-background-generative-ai-png.jpeg",
+      "ingredients": [
+        "1 cup strong brewed coffee, cooled",
+        "3 tablespoons coffee liqueur (optional)",
+        "3 large egg yolks",
+        "1/2 cup granulated sugar",
+        "1 cup mascarpone cheese",
+        "1 cup heavy cream",
+        "1 teaspoon vanilla extract",
+        "24 ladyfingers",
+        "Cocoa powder for dusting"
+      ],
+      "steps": [
+        "In a shallow dish, combine the brewed coffee and coffee liqueur.",
+        "In a bowl, whisk together the egg yolks and sugar until pale and creamy.",
+        "Add the mascarpone cheese and mix until smooth.",
+        "In a separate bowl, whip the heavy cream and vanilla extract until soft peaks form.",
+        "Fold the whipped cream into the mascarpone mixture gently.",
+        "Quickly dip each ladyfinger into the coffee mixture and layer them in a serving dish.",
+        "Spread half of the mascarpone mixture over the ladyfingers. Repeat with another layer.",
+        "Refrigerate for at least 4 hours or overnight. Dust with cocoa powder before serving."
+      ],
+      "nutrition": {
+        "calories": 300,
+        "protein": 8,
+        "fat": 20,
+        "carbohydrates": 28
+      }
+    },
+    {
+      "name": "Lemon Tart",
+      "description": "A refreshing and tangy dessert with a buttery crust and creamy lemon filling.",
+      "imageUrl": "assets/food/deserts/LemonTart_1024x1024_cb86f5f9-9378-46d5-9358-4ca19a471bed.webp",
+      "ingredients": [
+        "1 1/2 cups all-purpose flour",
+        "1/2 cup powdered sugar",
+        "1/2 cup unsalted butter, softened",
+        "1/4 teaspoon salt",
+        "1 large egg yolk",
+        "1/2 cup granulated sugar",
+        "2 large eggs",
+        "1/2 cup fresh lemon juice",
+        "Zest of 1 lemon",
+        "Powdered sugar for dusting"
+      ],
+      "steps": [
+        "Preheat the oven to 350°F (175°C).",
+        "In a bowl, combine flour, powdered sugar, butter, and salt. Mix until crumbly.",
+        "Add the egg yolk and mix until a dough forms. Press into a tart pan.",
+        "Blind bake the crust for 15 minutes until lightly golden.",
+        "In another bowl, whisk together granulated sugar, eggs, lemon juice, and lemon zest.",
+        "Pour the lemon filling into the baked crust and bake for an additional 20-25 minutes.",
+        "Let cool, then dust with powdered sugar before serving."
+      ],
+      "nutrition": {
+        "calories": 250,
+        "protein": 4,
+        "fat": 15,
+        "carbohydrates": 30
+      }
+    },
+    {
+      "name": "Pavlova",
+      "description": "A light and airy meringue dessert topped with whipped cream and fresh fruits.",
+      "imageUrl": "assets/food/deserts/ai-generated-pavlova-food-dish-on-transparent-background-image-free-png.png",
+      "ingredients": [
+        "4 large egg whites",
+        "1 cup granulated sugar",
+        "1 teaspoon vanilla extract",
+        "1 teaspoon white vinegar",
+        "1 tablespoon cornstarch",
+        "1 cup heavy cream",
+        "Fresh fruits (kiwi, strawberries, passion fruit, etc.) for topping"
+      ],
+      "steps": [
+        "Preheat the oven to 250°F (120°C). Line a baking sheet with parchment paper.",
+        "In a large bowl, beat the egg whites until soft peaks form.",
+        "Gradually add sugar while continuing to beat until stiff peaks form.",
+        "Add vanilla extract, vinegar, and cornstarch, and mix gently.",
+        "Spread the meringue onto the prepared baking sheet, shaping it into a round nest.",
+        "Bake for 1 hour, then turn off the oven and let it cool completely inside.",
+        "Whip the heavy cream until soft peaks form and spread it over the cooled meringue.",
+        "Top with fresh fruits and serve immediately."
+      ],
+      "nutrition": {
+        "calories": 180,
+        "protein": 3,
+        "fat": 8,
+        "carbohydrates": 25
+      }
+    }
+  ],
+  "SeaFood": [
+    {
+      "name": "Seafood Ceviche",
+      "description": "A refreshing Mexican dish made with fresh seafood, marinated in citrus juices and mixed with vegetables.",
+      "imageUrl": "assets/food/SeaFood/images (1).jpeg",
+      "ingredients": [
+        "1 pound fresh shrimp, peeled and deveined",
+        "1 cup lime juice (about 8 limes)",
+        "1/2 cup red onion, finely chopped",
+        "1/2 cup cucumber, diced",
+        "1/2 cup tomatoes, diced",
+        "1/4 cup cilantro, chopped",
+        "1 jalapeño, finely chopped (optional)",
+        "Salt and pepper to taste",
+        "Tortilla chips for serving"
+      ],
+      "steps": [
+        "In a large bowl, combine the shrimp and lime juice. Ensure the shrimp are fully submerged.",
+        "Cover the bowl and refrigerate for about 30 minutes, until the shrimp turn pink and opaque.",
+        "Drain the excess lime juice from the shrimp and add the chopped red onion, cucumber, tomatoes, cilantro, and jalapeño.",
+        "Mix well and season with salt and pepper to taste.",
+        "Serve chilled with tortilla chips."
+      ],
+      "nutrition": {
+        "calories": 200,
+        "protein": 20,
+        "fat": 5,
+        "carbohydrates": 10
+      }
+    },
+    {
+      "name": "Thai Shrimp Curry",
+      "description": "A flavorful and aromatic curry made with shrimp, coconut milk, and Thai spices.",
+      "imageUrl": "assets/food/SeaFood/images (3).png",
+      "ingredients": [
+        "1 pound shrimp, peeled and deveined",
+        "1 tablespoon coconut oil",
+        "1 onion, chopped",
+        "3 cloves garlic, minced",
+        "1 tablespoon ginger, grated",
+        "2 tablespoons red curry paste",
+        "1 can (14 ounces) coconut milk",
+        "1 cup bell peppers, sliced",
+        "1 cup green beans, trimmed",
+        "2 tablespoons fish sauce",
+        "1 tablespoon brown sugar",
+        "Fresh basil leaves for garnish",
+        "Steamed rice for serving"
+      ],
+      "steps": [
+        "In a large skillet, heat coconut oil over medium heat. Add the onion, garlic, and ginger, and sauté until fragrant.",
+        "Stir in the red curry paste and cook for an additional minute.",
+        "Pour in the coconut milk and bring to a simmer.",
+        "Add the shrimp, bell peppers, and green beans. Cook for about 5-7 minutes until the shrimp are cooked through.",
+        "Stir in the fish sauce and brown sugar. Adjust seasoning to taste.",
+        "Serve hot over steamed rice, garnished with fresh basil leaves."
+      ],
+      "nutrition": {
+        "calories": 350,
+        "protein": 25,
+        "fat": 18,
+        "carbohydrates": 30
+      }
+    },
+    {
+      "name": "Baked Garlic Butter Shrimp",
+      "description": "A simple yet delicious baked shrimp dish cooked in a garlic butter sauce.",
+      "imageUrl": "assets/food/SeaFood/png-clipart-asian-cuisine-vegetarian-cuisine-thai-cuisine-food-dish-seafood-miscellaneous-food.png",
+      "ingredients": [
+        "1 pound shrimp, peeled and deveined",
+        "1/2 cup unsalted butter, melted",
+        "6 cloves garlic, minced",
+        "1 tablespoon lemon juice",
+        "1 teaspoon paprika",
+        "Salt and pepper to taste",
+        "Fresh parsley for garnish",
+        "Lemon wedges for serving"
+      ],
+      "steps": [
+        "Preheat the oven to 350°F (175°C).",
+        "In a bowl, mix melted butter, garlic, lemon juice, paprika, salt, and pepper.",
+        "Place the shrimp in a baking dish and pour the garlic butter mixture over them.",
+        "Bake for 15-20 minutes, until the shrimp are opaque and cooked through.",
+        "Garnish with fresh parsley and serve with lemon wedges."
+      ],
+      "nutrition": {
+        "calories": 400,
+        "protein": 30,
+        "fat": 25,
+        "carbohydrates": 5
+      }
+    },
+    {
+      "name": "Grilled Salmon",
+      "description": "A healthy and flavorful salmon fillet grilled to perfection.",
+      "imageUrl": "assets/food/SeaFood/Plate-with-delicious-grilled-salmon-isolated-on-transparent-background-PNG.png",
+      "ingredients": [
+        "4 salmon fillets",
+        "2 tablespoons olive oil",
+        "2 tablespoons lemon juice",
+        "2 cloves garlic, minced",
+        "Salt and pepper to taste",
+        "Lemon slices for garnish"
+      ],
+      "steps": [
+        "Preheat the grill to medium-high heat.",
+        "In a bowl, mix olive oil, lemon juice, garlic, salt, and pepper.",
+        "Brush the mixture over the salmon fillets.",
+        "Place the salmon on the grill and cook for about 5-6 minutes per side, or until the fish flakes easily with a fork.",
+        "Garnish with lemon slices before serving."
+      ],
+      "nutrition": {
+        "calories": 350,
+        "protein": 40,
+        "fat": 20,
+        "carbohydrates": 0
+      }
+    }
+  ],
+
+  "FastFood": [
+    {
+      "id": "6",
+      "name": "Cheese Pizza",
+      "description": "Crispy crust with tomato sauce and mozzarella cheese",
+      "imageUrl": "assets/images/pizza (1).png",
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella"
+      ],
+      "steps": [
+        "Stretch dough into rounds.",
+        "Top with sauce and cheese.",
+        "Bake until crust is crispy and cheese melted."
+      ],
+      "nutrition": {
+        "calories": 700,
+        "protein": 4,
+        "prepTime": 40
+      }
+    },
+    {
+      "id": "7",
+      "name": "Hamburger",
+      "description": "Juicy beef patty with lettuce, tomato, onion and cheese on a bun",
+      "imageUrl": "assets/TabBar_Image/images.webp",
+      "ingredients": [
+        "ground beef",
+        "hamburger buns",
+        "lettuce",
+        "tomato",
+        "onion",
+        "cheese"
+      ],
+      "steps": [
+        "Form ground beef into patties and grill.",
+        "Toast buns.",
+        "Place patty on bun and top with lettuce, tomato, onion and cheese."
+      ],
+      "nutrition": {
+        "calories": 650,
+        "protein": 4,
+        "prepTime": 15
+      }
+    }
+  ],
+  "Drinks": [
+    {
+      "id": "2",
+      "name": "Orange Juice",
+      "description": "A refreshing and fresh juice made from ripe oranges.",
+      "imageUrl": "assets/food/Drinks/download.png",
+      "ingredients": [
+        "4 oranges",
+        "1 tablespoon sugar (optional)",
+        "1 teaspoon lemon juice (optional)",
+        "Ice (for serving)"
+      ],
+      "steps": [
+        "Wash the oranges thoroughly under running water.",
+        "Use a juicer to extract the juice from the oranges until you have fresh juice.",
+        "If you don't have a juicer, you can use a blender, but be sure to strain the juice to remove any pulp.",
+        "If you prefer your juice sweeter, you can add sugar to taste. Mix well until the sugar dissolves.",
+        "Add lemon juice to enhance the flavor, and mix well.",
+        "Serve the juice in glasses with ice as desired."
+      ],
+      "nutrition": {
+        "calories": 110,
+        "protein": 2,
+        "fat": 0,
+        "carbohydrates": 27,
+        "fiber": 2,
+        "sugar": 21
+      }
+    },
+    {
+      "id": "3",
+      "name": "Mango Smoothie",
+      "description": "A creamy and refreshing smoothie made with ripe mangoes.",
+      "imageUrl": "assets/food/Drinks/psd-mango-juice-transparent-background_1019762-39 (1).png",
+      "ingredients": [
+        "2 ripe mangoes",
+        "1 banana",
+        "1 cup yogurt",
+        "1 cup milk",
+        "1 tablespoon honey (optional)",
+        "Ice cubes"
+      ],
+      "steps": [
+        "Peel and chop the mangoes and banana.",
+        "In a blender, combine the mangoes, banana, yogurt, milk, and honey.",
+        "Blend until smooth. If the mixture is too thick, add more milk to reach your desired consistency.",
+        "Add ice cubes and blend again until smooth.",
+        "Pour into glasses and serve immediately."
+      ],
+      "nutrition": {
+        "calories": 250,
+        "protein": 6,
+        "fat": 5,
+        "carbohydrates": 47,
+        "fiber": 3,
+        "sugar": 35
+      }
+    },
+    {
+      "id": "4",
+      "name": "Strawberry Smoothie",
+      "description": "A delightful smoothie made with fresh strawberries and yogurt.",
+      "imageUrl": "assets/food/Drinks/psd-mango-juice-transparent-background_1019762-39 (1) (1).png",
+      "ingredients": [
+        "2 cups fresh strawberries",
+        "1 banana",
+        "1 cup yogurt",
+        "1 cup milk",
+        "1 tablespoon honey (optional)",
+        "Ice cubes"
+      ],
+      "steps": [
+        "Wash the strawberries and remove the stems.",
+        "In a blender, combine the strawberries, banana, yogurt, milk, and honey.",
+        "Blend until smooth. Adjust the thickness by adding more milk if necessary.",
+        "Add ice cubes and blend again until smooth.",
+        "Pour into glasses and serve cold."
+      ],
+      "nutrition": {
+        "calories": 220,
+        "protein": 6,
+        "fat": 5,
+        "carbohydrates": 45,
+        "fiber": 4,
+        "sugar": 32
+      }
+    },
+    {
+      "id": "5",
+      "name": "Avocado Smoothie",
+      "description": "A creamy and nutritious smoothie made with ripe avocados.",
+      "imageUrl": "assets/food/Drinks/pngtree-avocado-smoothie-drink-isolated-on-transparent-background-png-image_13317564.png",
+      "ingredients": [
+        "1 ripe avocado",
+        "1 banana",
+        "1 cup almond milk (or regular milk)",
+        "1 tablespoon honey (optional)",
+        "Ice cubes"
+      ],
+      "steps": [
+        "Cut the avocado in half, remove the pit, and scoop the flesh into a blender.",
+        "Add the banana, almond milk, and honey to the blender.",
+        "Blend until smooth and creamy. If the smoothie is too thick, add more milk to thin it out.",
+        "Add ice cubes and blend again until smooth.",
+        "Serve in a glass and enjoy!"
+      ],
+      "nutrition": {
+        "calories": 300,
+        "protein": 4,
+        "fat": 15,
+        "carbohydrates": 40,
+        "fiber": 7,
+        "sugar": 18
+      }
+    }
+  ]
+
+}

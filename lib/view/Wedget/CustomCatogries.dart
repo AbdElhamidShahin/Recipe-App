@@ -4,22 +4,32 @@ import '../../model/articalmodel.dart';
 import '../../model/itemProvider.dart';
 import 'CustomDetails.dart';
 
-class CustomCategories extends StatelessWidget {
+class CustomCategories extends StatefulWidget {
   final Recipe? recipe;
 
   const CustomCategories({super.key, this.recipe});
 
   @override
+  State<CustomCategories> createState() => _CustomCategoriesState();
+}
+
+class _CustomCategoriesState extends State<CustomCategories> {
+  bool _isFavorite = true;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (recipe != null) {
+        if (widget.recipe != null) {
           Navigator.of(context).push(
             PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) => CustomDetails(recipe: recipe),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  CustomDetails(recipe: widget.recipe),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
                 var sizeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(parent: animation, curve: Curves.easeInOutCubic),
+                  CurvedAnimation(
+                      parent: animation, curve: Curves.easeInOutCubic),
                 );
 
                 return SizeTransition(
@@ -58,23 +68,39 @@ class CustomCategories extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          recipe?.name ?? 'اسم غير متاح',
-                          style: const TextStyle(color: Colors.black, fontSize: 20),
+                          widget.recipe?.name ?? 'اسم غير متاح',
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 20),
                         ),
                         Row(
                           children: [
                             Text(
-                              '⏱ ${recipe?.nutrition.prepTime ?? 15} Mins',
-                              style: const TextStyle(color: Colors.black, fontSize: 12),
+                              '⏱ ${widget.recipe!.nutrition?.prepTime ?? 15} Mins',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 12),
                             ),
                             const Spacer(),
                             IconButton(
                               onPressed: () {
-                                if (recipe != null) {
-                                  Provider.of<ItemProvider>(context, listen: false).addItem(recipe!);
+                                setState(() {
+                                  widget.recipe!.isFavorite =
+                                      !widget.recipe!.isFavorite;
+                                });
+                                if (widget.recipe != null) {
+                                  Provider.of<ItemProvider>(context,
+                                          listen: false)
+                                      .addItem(widget.recipe!);
                                 }
                               },
-                              icon: const Icon(Icons.favorite, size: 30),
+                              icon: Icon(
+                                widget.recipe!.isFavorite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                size: 25,
+                                color: widget.recipe!.isFavorite
+                                    ? Colors.red
+                                    : null,
+                              ),
                             ),
                           ],
                         ),
@@ -91,11 +117,11 @@ class CustomCategories extends StatelessWidget {
             left: 0,
             bottom: 100,
             child: Hero(
-              tag: recipe?.imageUrl ?? 'default-hero',
+              tag: widget.recipe?.imageUrl ?? 'default-hero',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                  widget.recipe?.imageUrl ?? 'assets/imagesFood/download.png',
                   height: 100,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {

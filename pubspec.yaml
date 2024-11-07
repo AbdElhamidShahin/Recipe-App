@@ -45,6 +45,7 @@ dependencies:
   provider: ^6.1.2
   flutter_floating_bottom_bar: ^1.2.1+1
   page_transition: ^2.1.0
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,12 @@ flutter:
     - assets/TabBar_Image/
     - assets/images/
     - assets/TabBar_Image/
+    - assets/food/deserts/
+    - assets/food/BreakFast/
+    - assets/food/Drinks/
+    - assets/food/SeaFood/
+    - assets/food/settings/
+    - assets/food/
 
     - assets/Recipe/recipe.json
 

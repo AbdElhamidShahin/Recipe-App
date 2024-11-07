@@ -19,12 +19,12 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             body: cubit.screens[cubit.currentIndex],  // يعرض الشاشة بناءً على الفهرس الحالي
             bottomNavigationBar: Container(
-              height: 70,  // تعيين ارتفاع مخصص لـ BottomNavigationBar
+              height: 70,
               margin: EdgeInsets.all(0),  // إضافة مسافة حول الشريط السفلي
               decoration: BoxDecoration(
                 color: Colors.black54,  // لون خلفية الشريط
                 borderRadius: BorderRadius.circular(30),  // جعل الزوايا مستديرة
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
                     blurRadius: 10,
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                   onTap: (index) {
                     cubit.changeBottomNavBar(index);  // تغيير الفهرس عند الضغط على عنصر
                   },
-                  backgroundColor: Colors.black54,  // لون الخلفية
+                  backgroundColor:  Color(0xFF2F2D2F), // لون الخلفية
                   type: BottomNavigationBarType.fixed,  // نوع الشريط ثابت
                   selectedItemColor: Colors.amber,  // لون العنصر المختار
                   unselectedItemColor: Colors.white54,  // لون العناصر غير المختارة

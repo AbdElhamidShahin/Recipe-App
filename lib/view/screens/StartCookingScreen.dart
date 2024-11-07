@@ -55,29 +55,6 @@ class _StartCookingScreenState extends State<StartCookingScreen>
       body: Stack(
         children: [
           Positioned(
-            top: 0,
-            right: 0,
-            left: 0,
-            bottom: 600,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                height: 100,
-                width: double.infinity,
-                child: Image.asset(
-                  widget.recipe?.imageUrl ?? 'assets/imagesFood/download.png',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Image.asset(
-                      'assets/imagesFood/download.png',
-                      fit: BoxFit.cover,
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-          Positioned(
             bottom: 0,
             left: 0,
             right: 0,
@@ -113,13 +90,13 @@ class _StartCookingScreenState extends State<StartCookingScreen>
                     Row(
                       children: [
                         IconText(
-                          text: "${widget.recipe?.nutrition.calories} Kcal",
-                          image: 'assets/imagesFood/22.jpeg',
+                          text: "${widget.recipe?.nutrition?.calories} Kcal",
+                          image: 'assets/imagesFood/22.png',
                         ),
                         Spacer(),
                         IconText(
-                          text: "${widget.recipe?.nutrition.calories} Fats",
-                          image: 'assets/imagesFood/star.jpeg',
+                          text: "${widget.recipe?.nutrition?.calories} Fats",
+                          image: 'assets/food/high-fat-food-rgb-color-icon-vector-37009941.png',
                         ),
                       ],
                     ),
@@ -127,13 +104,13 @@ class _StartCookingScreenState extends State<StartCookingScreen>
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconText(
-                          text: "${widget.recipe?.nutrition.calories} Carbs",
-                          image: 'assets/imagesFood/22.jpeg',
+                          text: "${widget.recipe?.nutrition?.calories} Carbs",
+                          image: 'assets/food/wheat-icon-wheat-logo-illustration-isolated-on-white-background-editable-stroke-free-vector.png',
                         ),
                         Spacer(),
                         IconText(
-                          text: "${widget.recipe?.nutrition.protein} Protein",
-                          image: 'assets/imagesFood/star.jpeg',
+                          text: "${widget.recipe?.nutrition?.protein} Protein",
+                          image: 'assets/food/381007.png',
                         ),
                       ],
                     ),
@@ -146,7 +123,7 @@ class _StartCookingScreenState extends State<StartCookingScreen>
                     if (widget.recipe?.steps != null &&
                         widget.recipe!.steps!.isNotEmpty)
                       Container(
-                        height: 220,
+                        height: 200,
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,29 +143,23 @@ class _StartCookingScreenState extends State<StartCookingScreen>
                     SizedBox(height: 20),
 
                     // Enhanced animation with rotation, scaling, and color change
-                    RotationTransition(
-                      turns: _animation,
-                      child: ScaleTransition(
-                        scale: _scaleAnimation,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: _colorAnimation.value,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Center(
-                            child: Text(
-                              "End Recipe",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                              ),
-                            ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF2F2D2F),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Center(
+                        child: Text(
+                          "End Recipe",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
                           ),
                         ),
                       ),
@@ -197,7 +168,34 @@ class _StartCookingScreenState extends State<StartCookingScreen>
                 ),
               ),
             ),
+          ),          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 600,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                height: 100,
+                width: double.infinity,
+                child: Hero(
+                  tag: widget.recipe?.imageUrl ?? 'default-hero',
+
+                  child: Image.asset(
+                    widget.recipe?.imageUrl ?? 'assets/imagesFood/download.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset(
+                        'assets/imagesFood/download.png',
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
           ),
+
         ],
       ),
     );

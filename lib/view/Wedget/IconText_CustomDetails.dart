@@ -1,4 +1,3 @@
-// مثال على IconText و IngredientItem
 import 'package:flutter/material.dart';
 
 class IconText extends StatelessWidget {
@@ -14,13 +13,15 @@ class IconText extends StatelessWidget {
       child: Row(
         children: [
           Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey,
-              ),
-              child: Image.asset(image),height: 50,width: 50,),
-          SizedBox(width: 4),
-          Text(text, style: TextStyle(fontSize: 16)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Image.asset(image),
+            height: 50,
+            width: 50,
+          ),
+          const SizedBox(width: 4),
+          Text(text, style: const TextStyle(fontSize: 16)),
         ],
       ),
     );

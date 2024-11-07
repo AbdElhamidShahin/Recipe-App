@@ -7,27 +7,38 @@ class TabBarPage extends StatefulWidget {
   _TabBarPageState createState() => _TabBarPageState();
 }
 
-class _TabBarPageState extends State<TabBarPage> {
+class _TabBarPageState extends State<TabBarPage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5, // عدد التابات
+      length: 6, // عدد التابات
       child: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.menu),
-                  Icon(Icons.search),
+                  const Icon(
+                    Icons.menu,
+                    size: 30,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: const Image(
+                        width: 50,
+                        height: 50,
+                        image: NetworkImage(
+                            'https://img.freepik.com/premium-vector/cute-boy-smiling-cartoon-kawaii-boy-illustration-boy-avatar-happy-kid_1001605-3447.jpg')),
+                  )
                 ],
               ),
             ),
-            const SizedBox(height: 28),
+            const SizedBox(height: 10),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
@@ -38,56 +49,71 @@ class _TabBarPageState extends State<TabBarPage> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Fast Food.',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                'Recipes Famous Food.',
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
             ),
 
-            // TabBar داخل PreferredSize لضبط الترتيب والحواف
-            PreferredSize(
-              preferredSize: Size.fromHeight(50.0),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // جعل التمرير أفقيًا
               child: Container(
-                color: Colors.white, // يمكنك تغيير اللون هنا إذا كنت تريد خلفية مختلفة
                 child: const TabBar(
-                  isScrollable: true,
-                  indicatorColor: Colors.transparent, // إزالة الخط الفاصل السفلي
-                  indicatorSize: TabBarIndicatorSize.label, // تقليل حجم المؤشر إذا لزم الأمر
-                  labelPadding: EdgeInsets.symmetric(horizontal: 10.0), // تقليل المسافات بين التابات
+                  isScrollable: true, // جعل التابات قابلة للتمرير
+                  dividerHeight: 0,
+                  indicatorColor:
+                      Colors.transparent, // إزالة الخط الفاصل السفلي
+                  labelPadding: EdgeInsets.symmetric(
+                      horizontal: 8.0), // تقليل المسافات بين التابات
                   tabs: [
                     ImageUpper(
+                      image: 'assets/food/BreakFast/images(2).png',
+                      text: 'diner',
+                    ),
+                    ImageUpper(
                       image: 'assets/TabBar_Image/Breakfast.png',
-                      text: 'Electronics',
-                    ),
-                    ImageUpper(
-                      image: 'assets/TabBar_Image/tasty-grilled-steak-on-white-600w-1167071881.webp',
-                      text: 'Jewelry',
-                    ),
-                    ImageUpper(
-                      image: 'assets/TabBar_Image/Sea Food.png',
-                      text: 'Men',
-                    ),
-                    ImageUpper(
-                      image: 'assets/TabBar_Image/Fast Food.jpeg',
-                      text: 'Women',
+                      text: 'breakfast',
                     ),
                     ImageUpper(
                       image: 'assets/TabBar_Image/Dessertsjpeg.png',
-                      text: 'Women',
+                      text: 'desserts',
+                    ),
+                    ImageUpper(
+                      image: 'assets/TabBar_Image/Sea Food.png',
+                      text: 'SeaFood',
+                    ),
+                    ImageUpper(
+                      image: 'assets/images/burger.png',
+                      text: 'FastFood',
+                    ),
+                    ImageUpper(
+                      image:
+                          'assets/food/Drinks/summer-drinks-fruits-png-6.png',
+                      text: 'Drinks',
                     ),
                   ],
                 ),
               ),
             ),
-
+            const SizedBox(
+              height: 24,
+            ),
+            const Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Text(
+                "Popular now",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              ),
+            ),
             // المحتوى السفلي TabBarView
             Expanded(
               child: TabBarView(
                 children: [
-                  Stackscreen(),
-                  Stackscreen(),
-                  Stackscreen(),
-                  Stackscreen(),
-                  Stackscreen(),
+                  StacksScreen(category: 'diner'),
+                  StacksScreen(category: 'breakfast'),
+                  StacksScreen(category: 'desserts'),
+                  StacksScreen(category: 'SeaFood'),
+                  StacksScreen(category: 'FastFood'),
+                  StacksScreen(category: 'Drinks'),
                 ],
               ),
             ),

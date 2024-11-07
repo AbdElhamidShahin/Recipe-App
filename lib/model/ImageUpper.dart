@@ -10,13 +10,16 @@ class ImageUpper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: 50,
-          height: 50,
-          child: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage(image),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 60,
+            height: 60,
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.transparent,
+              backgroundImage: AssetImage(image),
+            ),
           ),
         ),
         const SizedBox(height: 8), // مسافة بين الصورة والنص
@@ -24,6 +27,7 @@ class ImageUpper extends StatelessWidget {
           text,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
+     SizedBox(width: 50,),
       ],
     );
   }
